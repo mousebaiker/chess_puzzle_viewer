@@ -43,7 +43,13 @@ var init = function() {
   var fenpath = 'https://raw.githubusercontent.com/mousebaiker/chess_puzzle_viewer/master/docs/materials/fens.txt'
   var answerspath = 'https://raw.githubusercontent.com/mousebaiker/chess_puzzle_viewer/master/docs/materials/answers.txt'
   data = new DataHolder(fenpath, answerspath)
-  puzzle = data.getPuzzle(114);
+  hash = document.location.hash
+  console.log(hash)
+  if (hash.length == 0) {
+    hash = "#1"
+  }
+  hash = parseInt(hash.slice(1))
+  puzzle = data.getPuzzle(hash);
   var puzzle_name = puzzle[0][0];
   var puzzle_fen = puzzle[0][1];
   console.log(typeof(puzzle_fen))
