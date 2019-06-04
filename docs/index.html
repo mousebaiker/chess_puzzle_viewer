@@ -9,9 +9,15 @@
   <body>
     <h1 id="name"> Starting position </h1>
     <div id="board"></div>
-    <a href="#100" class="button" >Previous</a>
-    <a href="" class="button" >View answer</a>
-    <a href="" class="button" >Next</a>
+    <div id="buttons">
+      <a class="button" id="prev" onclick="updatePage(-1)">Previous</a>
+      <details id="answer">
+        <summary class="button">View answer</summary>
+        <div id="answer_text"> Hey, ya! </div>
+      </details>
+      <a class="button" id="next" onclick="updatePage(1)">Next</a>
+    </div>
+
 
     <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="js/chessboard-0.3.0.min.js"></script>

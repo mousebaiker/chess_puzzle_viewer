@@ -39,28 +39,43 @@ function DataHolder(fenPath, answersPath) {
   }
 }
 
-var init = function() {
-  var fenpath = 'https://raw.githubusercontent.com/mousebaiker/chess_puzzle_viewer/master/docs/materials/fens.txt'
-  var answerspath = 'https://raw.githubusercontent.com/mousebaiker/chess_puzzle_viewer/master/docs/materials/answers.txt'
-  data = new DataHolder(fenpath, answerspath)
+var parseHash = function() {
   hash = document.location.hash
-  console.log(hash)
   if (hash.length == 0) {
     hash = "#1"
   }
   hash = parseInt(hash.slice(1))
-  puzzle = data.getPuzzle(hash);
-  var puzzle_name = puzzle[0][0];
-  var puzzle_fen = puzzle[0][1];
-  console.log(typeof(puzzle_fen))
-  var puzzle_answer = puzzle[1];
-  var board = ChessBoard('board',
+  return hash
+}
+
+var data = null;
+var board = null;
+
+var init = function() {
+  var fenpath = 'https://raw.githubusercontent.com/mousebaiker/chess_puzzle_viewer/master/docs/materials/fens.txt'
+  var answerspath = 'https://raw.githubusercontent.com/mousebaiker/chess_puzzle_viewer/master/docs/materials/answers.txt'
+  data = new DataHolder(fenpath, answerspath)
+  board = ChessBoard('board',
   {'draggable': true,
-   'position': puzzle_fen.slice(0, puzzle_fen.length - 1)});
-  document.getElementById('name').textContent = puzzle_name;
+   'position': 'start',
+    'showNotation': false});
+  updatePage(0);
 }
 $(document).ready(init)
 
+var updatePage = function(hashIncrement) {
+  var hash = parseHash()
+  hash += hashIncrement;
+  var puzzle = data.getPuzzle(hash);
+  var puzzle_name = puzzle[0][0];
+  var puzzle_fen = puzzle[0][1];
+  var puzzle_answer = puzzle[1];
+  board.position(puzzle_fen.slice(0, puzzle_fen.length - 1));
+  document.getElementById('name').textContent = puzzle_name;
+  document.getElementById('answer').open = false;
+  document.getElementById('answer_text').textContent = puzzle_answer;
+  document.location.hash = "#" + hash.toString();
+}
 
 // $('#startBtn').on('click', board2.start);
 // $('#clearBtn').on('click', board2.clear);
