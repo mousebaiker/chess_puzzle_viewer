@@ -76,6 +76,3 @@ var updatePage = function(hashIncrement) {
   document.getElementById('answer_text').textContent = puzzle_answer;
   document.location.hash = "#" + hash.toString();
 }
-
-// $('#startBtn').on('click', board2.start);
-// $('#clearBtn').on('click', board2.clear);
