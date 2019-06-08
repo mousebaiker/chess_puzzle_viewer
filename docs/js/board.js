@@ -60,6 +60,9 @@ var init = function() {
    'position': 'start',
     'showNotation': false});
   updatePage(0);
+  window.onhashchange = function () {
+    updatePage(0);
+  }
 }
 $(document).ready(init)
 
