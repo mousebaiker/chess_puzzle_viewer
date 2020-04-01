@@ -1,14 +1,10 @@
-#board {
-  width: 400px;
-}
-
 #answer_text {
   position: absolute;
   left: 10px;
 }
 
-details {
-  display: inline-block;
+#board_widget {
+  width: 70%
 }
 
 summary::-webkit-details-marker {
@@ -16,12 +12,16 @@ summary::-webkit-details-marker {
 }
 
 a:active{
- box-shadow:inset 0 0.6em 2em -0.3em rgba(0,0,0,0.15),inset 0 0 0em 0.05em rgba(255,255,255,0.12);
+ box-shadow:inset 0 0.6em70em -0.3em rgba(0,0,0,0.15),inset 0 0 0em 0.05em rgba(255,255,255,0.12);
+}
+
+.nav-button {
+  float: left;
 }
 
 .button {
+  width: fit-content;
   vertical-align: top;
-  display: inline-block;
   padding :0.4em 1.0em;
   margin:0.1em 0.3em 0.3em 0;
   background-color: #8463b5;

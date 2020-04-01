@@ -51,7 +51,14 @@ var parseHash = function() {
 var data = null;
 var board = null;
 
+var set_css_properties = function() {
+  width = Math.min($(window).height(), $(window).height())
+  console.log(width.toString() + "px")
+  document.body.style.maxWidth = width.toString() + "px"
+}
+
 var init = function() {
+  set_css_properties()
   var fenpath = 'https://raw.githubusercontent.com/mousebaiker/chess_puzzle_viewer/master/docs/materials/fens.txt'
   var answerspath = 'https://raw.githubusercontent.com/mousebaiker/chess_puzzle_viewer/master/docs/materials/answers.txt'
   data = new DataHolder(fenpath, answerspath)

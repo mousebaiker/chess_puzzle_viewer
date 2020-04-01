@@ -8,14 +8,18 @@
   </head>
   <body>
     <h1 id="name"> Starting position </h1>
-    <div id="board"></div>
+    <details id="board_widget" open=true>
+      <summary class="button"> Hide board </summary>
+      <div id="board"></div>
+    </details>
+
     <div id="buttons">
-      <a class="button" id="prev" onclick="updatePage(-1)">Previous</a>
-      <details id="answer">
+      <a class="button nav-button" id="prev" onclick="updatePage(-1)">Previous</a>
+      <details id="answer" class="nav-button" open=true>
         <summary class="button">View answer</summary>
         <div id="answer_text"> Hey, ya! </div>
       </details>
-      <a class="button" id="next" onclick="updatePage(1)">Next</a>
+      <a class="button nav-button" id="next" onclick="updatePage(1)">Next</a>
     </div>
 
 
