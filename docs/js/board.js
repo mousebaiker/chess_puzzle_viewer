@@ -53,7 +53,13 @@ var board = null;
 var board_visible = true;
 
 var set_css_properties = function() {
-  width = Math.min($(window).height(), $(window).height())
+  width = Math.min( $(window).height())
+
+  if ($(window).height() < $(window).width()) {
+    width = 0.7 * width
+  }
+
+
   document.body.style.maxWidth = width.toString() + "px"
 }
 
@@ -70,11 +76,11 @@ var init = function() {
   window.onhashchange = function () {
     updatePage(0);
   }
+  updateHiddenBoard()
 }
 $(document).ready(init)
 
 var updatePage = function(hashIncrement) {
-  updateHiddenBoard()
   var hash = parseHash()
   hash += hashIncrement;
   var puzzle = data.getPuzzle(hash);
