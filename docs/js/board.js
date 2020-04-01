@@ -91,7 +91,10 @@ var updatePage = function(hashIncrement) {
   document.getElementById('name').textContent = puzzle_name;
   document.getElementById('answer').open = false;
   document.getElementById('answer_text').textContent = puzzle_answer;
-  document.getElementById('fen').textContent = puzzle_fen;
+
+  var pieces = buildColorPieces(board.position())
+  var puzzle_description = getFormatedPosition(pieces)
+  document.getElementById('fen').innerHTML = puzzle_description;
   document.location.hash = "#" + hash.toString();
 }
 
