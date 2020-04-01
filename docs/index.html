@@ -8,14 +8,17 @@
   </head>
   <body>
     <h1 id="name"> Starting position </h1>
-    <details id="board_widget" open=true>
-      <summary class="button"> Hide board </summary>
+    <details id="board_widget" open=true ontoggle="updateHiddenBoard()">
+      <summary class="button" id="hide_text"> Hide board </summary>
       <div id="board"></div>
     </details>
-
+    <details id="fen_widget" open=true>
+      <summary></summary>
+      <div id="fen">Hi! </div>
+    </details>
     <div id="buttons">
       <a class="button nav-button" id="prev" onclick="updatePage(-1)">Previous</a>
-      <details id="answer" class="nav-button" open=true>
+      <details id="answer" class="nav-button" open=false>
         <summary class="button">View answer</summary>
         <div id="answer_text"> Hey, ya! </div>
       </details>

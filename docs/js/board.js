@@ -50,10 +50,10 @@ var parseHash = function() {
 
 var data = null;
 var board = null;
+var board_visible = true;
 
 var set_css_properties = function() {
   width = Math.min($(window).height(), $(window).height())
-  console.log(width.toString() + "px")
   document.body.style.maxWidth = width.toString() + "px"
 }
 
@@ -74,6 +74,7 @@ var init = function() {
 $(document).ready(init)
 
 var updatePage = function(hashIncrement) {
+  updateHiddenBoard()
   var hash = parseHash()
   hash += hashIncrement;
   var puzzle = data.getPuzzle(hash);
@@ -84,5 +85,18 @@ var updatePage = function(hashIncrement) {
   document.getElementById('name').textContent = puzzle_name;
   document.getElementById('answer').open = false;
   document.getElementById('answer_text').textContent = puzzle_answer;
+  document.getElementById('fen').textContent = puzzle_fen;
   document.location.hash = "#" + hash.toString();
+}
+
+var updateHiddenBoard = function() {
+  is_open = document.getElementById('board_widget').open
+
+  if (is_open) {
+    document.getElementById('hide_text').textContent = "Hide board"
+  } else  {
+    document.getElementById('hide_text').textContent = "Show board"
+  }
+
+  document.getElementById('fen_widget').open = !is_open
 }
